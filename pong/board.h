@@ -10,31 +10,15 @@ class board:public QWidget
     Q_OBJECT
 
 public:
-    board(QWidget* theWindow = 0)
-    {
-        imageTimeout = new QTimer();
-        imageTimeout->setInterval(100);
-        connect(imageTimeout,SIGNAL(timeout()),this,SLOT(coordinateUpdate()));
-        imageTimeout->start();
-        ballImage = new ball(this);
-    }
-    void paintEvent(QPaintEvent *event)
-    {
-        QPainter visibleWindow(this);
-        ballImage->drawImage(visibleWindow);
-    }
+    board(QWidget* theWindow = 0);
+    void paintEvent(QPaintEvent *event);
 
 private:
     QTimer* imageTimeout;
     ball* ballImage;
 
 private slots:
-    void coordinateUpdate()
-    {
-        ballImage->coordinateUpdate();
-        ballImage->checkBorder();
-        this->update();
-    }
+    void coordinateUpdate();
 };
 
 #endif // BOARD_H
