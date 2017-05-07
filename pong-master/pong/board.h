@@ -5,6 +5,7 @@
 #include <QTimer>
 #include "ball.h"
 #include "paddle.h"
+#include "paddle2.h"
 
 class board:public QWidget
 {
@@ -18,7 +19,7 @@ private:
     QTimer* imageTimeout;
     ball* ballImage;
     Paddle* paddle1;
-    Paddle* paddle2;
+    Paddle2* paddle2;
     void keyPressEvent(QKeyEvent *event);
     void keyReleaseEvent(QKeyEvent *event);
 

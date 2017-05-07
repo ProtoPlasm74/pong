@@ -16,11 +16,13 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     ball.cpp \
     board.cpp \
-    paddle.cpp
+    paddle.cpp \
+    paddle2.cpp
 
 HEADERS  += mainwindow.h \
     ball.h \
     board.h \
-    paddle.h
+    paddle.h \
+    paddle2.h
 
 FORMS    += mainwindow.ui

@@ -5,7 +5,7 @@
 
 ball::ball(QWidget *windowObject):windowObject(windowObject)
 {
-    ballImage = new QPixmap("../pong/apple.png");
+    //ballImage = new QPixmap("../pong/apple.png");
     coorX = 0;
     coorY = 0;
     displayImage = new QPainter();
@@ -40,49 +40,22 @@ void ball::drawImage(QPainter &paint)
 void ball::coordinateUpdate()
 {
     if(trackDirection == downRight){
-        coorX += 15;
-        coorY += 15;
+        coorX += 10;
+        coorY += 10;
     }else if(trackDirection == upRight){
-        coorX += 15;
-        coorY -= 15;
+        coorX += 10;
+        coorY -= 10;
     }else if(trackDirection == downLeft){
-        coorX -= 15;
-        coorY += 15;
+        coorX -= 10;
+        coorY += 10;
     }else{
-        coorX -= 15;
-        coorY -= 15;
+        coorX -= 10;
+        coorY -= 10;
     }
 }
 
-void ball::checkBorder(bool hitPaddle)
+void ball::checkBorder()
 {
-    if(hitPaddle == true)
-    {
-        if(trackDirection == downLeft){
-            trackDirection = downRight;
-        }else{
-            trackDirection = upRight;
-        }
-        //--------------------------
-        if(trackDirection == upRight){
-            trackDirection = downRight;
-        }else{
-            trackDirection = downLeft;
-        }
-        //--------------------------
-        if(trackDirection == downRight){
-            trackDirection = downLeft;
-        }else{
-            trackDirection = upLeft;
-        }
-        //--------------------------
-        if(trackDirection == downLeft){
-            trackDirection = upLeft;
-        }else{
-            trackDirection = upRight;
-        }
-        //--------------------------
-    }
     if(coorX <= 0){
         if(trackDirection == downLeft){
             trackDirection = downRight;
@@ -110,10 +83,82 @@ void ball::checkBorder(bool hitPaddle)
     }
 }
 
-bool ball::checkCollision(int paddleX, int paddleY)
+void ball::checkCollision(int paddleX, int paddleY)
 {
-    if(ballRender[paddleY][paddleX] == 1)
-        return true;
-    else
-        return false;
+    int X, Y;
+
+    if(trackDirection == downRight){
+        X = coorX + 10;
+        Y = coorY + 10;
+
+            if(X <= paddleX + 15 && X >= paddleX)
+            {
+                if((Y > paddleY && Y < paddleY + 55))
+                {
+                trackDirection = downLeft;
+                }
+                else if((Y >= paddleY && Y<= paddleY + 10))
+                {
+                trackDirection = upLeft;
+                }
+            }
+            else
+            {
+                //track direction remains unchanged
+            }
+    }else if(trackDirection == upRight){
+        X = coorX + 10;
+        Y = coorY - 10;
+        if(X <= paddleX + 15 && X >= paddleX)
+        {
+            if((Y > paddleY && Y < paddleY + 60))
+            {
+            trackDirection = upLeft;
+            }
+            else if(Y <= paddleY + 65 && Y <= paddleY + 55)
+            {
+            trackDirection = downLeft;
+            }
+        }
+            else
+            {
+                //direction does not change
+            }
+    }else if(trackDirection == downLeft){
+        X = coorX - 10;
+        Y = coorY + 10;
+        if(X <= paddleX + 15 && X >= paddleX)
+        {
+            if((Y > paddleY && Y < paddleY + 55))
+            {
+            trackDirection = downRight;
+            }
+            else if((Y >= paddleY - 5 && Y<= paddleY + 5))
+            {
+            trackDirection = upRight;
+            }
+        }
+        else
+        {
+            //direction does not change
+        }
+    }else{
+        X = coorX - 10;
+        Y = coorY - 10;
+        if(X <= paddleX + 15 && X >= paddleX)
+        {
+            if((Y > paddleY && Y < paddleY + 55))
+            {
+            trackDirection = upRight;
+            }
+            else if((Y <= paddleY + 65 && Y <= paddleY + 55))
+            {
+            trackDirection = downRight;
+            }
+        }
+        else
+        {
+             //direction does not change
+        }
+    }
 }

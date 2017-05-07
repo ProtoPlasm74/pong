@@ -13,8 +13,8 @@ public:
     ball(QWidget *windowObject = 0);
     void drawImage(QPainter& paint);
     void coordinateUpdate();
-    void checkBorder(bool hitPaddle);
-    bool checkCollision(int paddleX, int paddleY);
+    void checkBorder();
+    void checkCollision(int paddleX, int paddleY);
     enum {upRight, downRight, upLeft, downLeft};
 
 private:
