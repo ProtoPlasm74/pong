@@ -23,8 +23,11 @@ void board::paintEvent(QPaintEvent *event)
 
 void board::coordinateUpdate()
 {
+    bool hitPaddle;
     ballImage->coordinateUpdate();
-    ballImage->checkBorder();
+    hitPaddle = ballImage->checkCollision(paddle1->GetPosX(), paddle1->GetPosY());
+    hitPaddle = ballImage->checkCollision(paddle2->GetPosX(), paddle2->GetPosY());
+    ballImage->checkBorder(hitPaddle);
     paddle1->UpdatePosition();
     paddle2->UpdatePosition();
     this->update();

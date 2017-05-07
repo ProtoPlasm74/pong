@@ -88,9 +88,20 @@ void Paddle::UpdatePosition()
     }
 
     if((0 == direction) && (posY >= 18) && isMovingUp)
-        posY -= 15;
+        posY -= 10;
     else if((1 == direction) && ((posY + 45) <= 850) && isMovingDown)
-        posY += 15;
+        posY += 10;
     else
         posY = posY;
+}
+
+int Paddle::GetPosX()
+{
+    return this->posX;
+}
+
+
+int Paddle::GetPosY()
+{
+    return this->posY;
 }
