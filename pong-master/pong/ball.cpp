@@ -1,6 +1,6 @@
 #include "ball.h"
-
-
+#include "dialog.h"
+#include "board.h"
 
 //constructor
 ball::ball(QWidget *windowObject):windowObject(windowObject)
@@ -94,14 +94,19 @@ int ball::winCheck()
 {
     if(coorX <= 0)
     {
+        Dialog::on_lcdNumber_overflow();
+        board::showDialog();
         return 1;
     }
     else if (coorX >= windowObject->width() - 30)
     {
+        Dialog::on_lcdNumber_2_overflow();
+        board::showDialog();
         return -1;
     }
     else
     {
+        board::showDialog();
         return 0;
     }
 }

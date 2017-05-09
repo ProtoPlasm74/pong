@@ -18,6 +18,7 @@ public:
     board(QWidget* theWindow = 0);
     void paintEvent(QPaintEvent *event);
     void resetAndScore(int in);
+    void showDialog();
 
 private:
     QTimer* imageTimeout;

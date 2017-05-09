@@ -1,5 +1,5 @@
 #include "board.h"
-
+#include "dialog.h"
 
 
 //creates the board
@@ -53,6 +53,12 @@ void board::resetAndScore(int in)
     {
         p2score++;
     }
+}
+
+void board::showDialog()
+{
+    Dialog = new Dialog(NULL);
+    Dialog.show();
 }
 //manages the motion of balls and paddles
 void board::coordinateUpdate()
