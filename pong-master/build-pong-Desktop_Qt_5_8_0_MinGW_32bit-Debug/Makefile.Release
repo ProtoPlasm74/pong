@@ -452,6 +452,9 @@ release/moc_board.cpp: C:/Program\ Files\ (x86)/Qt/5.8/mingw53_32/include/QtWidg
 		C:/Program\ Files\ (x86)/Qt/5.8/mingw53_32/include/QtCore/QTimer \
 		C:/Program\ Files\ (x86)/Qt/5.8/mingw53_32/include/QtCore/qtimer.h \
 		C:/Program\ Files\ (x86)/Qt/5.8/mingw53_32/include/QtCore/qbasictimer.h \
+		C:/Program\ Files\ (x86)/Qt/5.8/mingw53_32/include/QtWidgets/QLabel \
+		C:/Program\ Files\ (x86)/Qt/5.8/mingw53_32/include/QtWidgets/qlabel.h \
+		C:/Program\ Files\ (x86)/Qt/5.8/mingw53_32/include/QtWidgets/qframe.h \
 		../pong/ball.h \
 		C:/Program\ Files\ (x86)/Qt/5.8/mingw53_32/include/QtCore/Qtimer \
 		C:/Program\ Files\ (x86)/Qt/5.8/mingw53_32/include/QtGui/QPixmap \
@@ -606,6 +609,9 @@ release/main.o: ../pong/main.cpp ../pong/mainwindow.h \
 		C:/Program\ Files\ (x86)/Qt/5.8/mingw53_32/include/QtCore/QTimer \
 		C:/Program\ Files\ (x86)/Qt/5.8/mingw53_32/include/QtCore/qtimer.h \
 		C:/Program\ Files\ (x86)/Qt/5.8/mingw53_32/include/QtCore/qbasictimer.h \
+		C:/Program\ Files\ (x86)/Qt/5.8/mingw53_32/include/QtWidgets/QLabel \
+		C:/Program\ Files\ (x86)/Qt/5.8/mingw53_32/include/QtWidgets/qlabel.h \
+		C:/Program\ Files\ (x86)/Qt/5.8/mingw53_32/include/QtWidgets/qframe.h \
 		../pong/ball.h \
 		C:/Program\ Files\ (x86)/Qt/5.8/mingw53_32/include/QtCore/Qtimer \
 		C:/Program\ Files\ (x86)/Qt/5.8/mingw53_32/include/QtGui/QPixmap \
@@ -982,6 +988,9 @@ release/board.o: ../pong/board.cpp ../pong/board.h \
 		C:/Program\ Files\ (x86)/Qt/5.8/mingw53_32/include/QtCore/QTimer \
 		C:/Program\ Files\ (x86)/Qt/5.8/mingw53_32/include/QtCore/qtimer.h \
 		C:/Program\ Files\ (x86)/Qt/5.8/mingw53_32/include/QtCore/qbasictimer.h \
+		C:/Program\ Files\ (x86)/Qt/5.8/mingw53_32/include/QtWidgets/QLabel \
+		C:/Program\ Files\ (x86)/Qt/5.8/mingw53_32/include/QtWidgets/qlabel.h \
+		C:/Program\ Files\ (x86)/Qt/5.8/mingw53_32/include/QtWidgets/qframe.h \
 		../pong/ball.h \
 		C:/Program\ Files\ (x86)/Qt/5.8/mingw53_32/include/QtCore/Qtimer \
 		C:/Program\ Files\ (x86)/Qt/5.8/mingw53_32/include/QtGui/QPixmap \

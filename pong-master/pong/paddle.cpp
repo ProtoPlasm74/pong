@@ -4,14 +4,14 @@ Paddle::Paddle()
 {
 
 }
-
+//constructor that allows the designation of a paddle start position
 Paddle::Paddle(int posX, int posY)
 {
     this->posX = posX;
     this->posY = posY;
     this->frame = 0;
 }
-
+//draws the paddle onto the board
 void Paddle::drawPaddle(QPainter *paint)
 {
 
@@ -32,7 +32,7 @@ void Paddle::drawPaddle(QPainter *paint)
         rY += 1;
     }
 }
-
+//handles the key press events as passed by the board class
 void Paddle::InputHandler(QKeyEvent *e, bool isPressed)
 {
     if(isPressed)
@@ -64,7 +64,7 @@ void Paddle::InputHandler(QKeyEvent *e, bool isPressed)
         }
     }
 }
-
+//Handles the motion of the paddle
 void Paddle::UpdatePosition()
 {
     if(moveUp)
@@ -89,19 +89,29 @@ void Paddle::UpdatePosition()
 
     if((0 == direction) && (posY >= 18) && isMovingUp)
         posY -= 10;
-    else if((1 == direction) && ((posY + 45) <= 400) && isMovingDown)
+    else if((1 == direction) && ((posY + 45) <= 370) && isMovingDown)
         posY += 10;
     else
         posY = posY;
 }
-
+//position get function - used in ball collisions
 int Paddle::GetPosX()
 {
     return this->posX;
 }
 
-
+//position get function - used in ball collisions
 int Paddle::GetPosY()
 {
     return this->posY;
+}
+//position set function - used in board::reset()
+void Paddle::setPosX(int x)
+{
+    posX = x;
+}
+//position set function - used in board::reset()
+void Paddle::setPosY(int y)
+{
+    posY = y;
 }

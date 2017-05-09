@@ -4,7 +4,11 @@
 #include <QPixmap>
 #include <Qpainter>
 #include <QWidget>
-
+#include <random>
+#include <time.h>
+//This class is used for ball logic and functions
+//Joshua Bowman
+//Zach Morgan
 class ball:public QWidget
 {
     Q_OBJECT
@@ -14,6 +18,7 @@ public:
     void drawImage(QPainter& paint);
     void coordinateUpdate();
     void checkBorder();
+    int winCheck();
     void checkCollision(int paddleX, int paddleY);
     enum {upRight, downRight, upLeft, downLeft};
 

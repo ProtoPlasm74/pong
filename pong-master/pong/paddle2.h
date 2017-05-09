@@ -2,7 +2,10 @@
 #define PADDLE2_H
 #include <QKeyEvent>
 #include <QPainter>
-
+//This class is used for paddle logic and functions
+//this class uses the Up/Down keys for control
+//Joshua Bowman
+//Zach Morgan
 
 class Paddle2
 {
@@ -12,6 +15,8 @@ public:
     void drawPaddle(QPainter* paint);
     int GetPosX();
     int GetPosY();
+    void setPosX(int x);
+    void setPosY(int y);
     void InputHandler(QKeyEvent *e, bool isPressed);
     void UpdatePosition();
 private:

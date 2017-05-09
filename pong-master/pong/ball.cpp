@@ -2,19 +2,21 @@
 
 
 
-
+//constructor
 ball::ball(QWidget *windowObject):windowObject(windowObject)
 {
     //ballImage = new QPixmap("../pong/apple.png");
-    coorX = 0;
-    coorY = 0;
+    coorX = 300;
+    coorY = 200;
     displayImage = new QPainter();
-    trackDirection = downRight;
+    srand(time(NULL));
+    trackDirection = rand()%3;
 }
 
 //void ball::drawImage(QPainter &paint)
 //{
 //    paint.drawPixmap(coorX,coorY,50,50,*ballImage);//
+//draws the ball onto the board
 void ball::drawImage(QPainter &paint)
 {
 
@@ -36,7 +38,7 @@ void ball::drawImage(QPainter &paint)
     }
 }
 //}
-
+//moves the ball in the direction it is currently travelling
 void ball::coordinateUpdate()
 {
     if(trackDirection == downRight){
@@ -53,7 +55,7 @@ void ball::coordinateUpdate()
         coorY -= 10;
     }
 }
-
+//checks the border of the screen. If the ball is on the border, it bounces off of it
 void ball::checkBorder()
 {
     if(coorX <= 0){
@@ -62,27 +64,50 @@ void ball::checkBorder()
         }else{
             trackDirection = upRight;
         }
+//        return 1;
     }else if(coorY <= 0){
         if(trackDirection == upRight){
             trackDirection = downRight;
         }else{
             trackDirection = downLeft;
         }
-    }else if(coorX >= (windowObject->width()-50)){
+//        return 0;
+    }else if(coorX >= (windowObject->width()-20)){
         if(trackDirection == downRight){
             trackDirection = downLeft;
         }else{
             trackDirection = upLeft;
         }
-    }else if(coorY >= (windowObject->height()-50)){
+//        return -1;
+    }else if(coorY >= (windowObject->height()-20)){
         if(trackDirection == downLeft){
             trackDirection = upLeft;
         }else{
             trackDirection = upRight;
         }
+//        return 0;
     }
 }
-
+//checks to see which side the ball is bouncing off of.
+//If it is the area behind the paddles, it returns 1 or -1 depending on the side.
+int ball::winCheck()
+{
+    if(coorX <= 0)
+    {
+        return 1;
+    }
+    else if (coorX >= windowObject->width() - 30)
+    {
+        return -1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+//this estimates the paddle location based on where the ball is and where it is going next.
+//If it finds the top or bottom of the paddle, it will reflect back upon its entry line.
+//If it finds the center, it reflects as though it bounced off a wall.
 void ball::checkCollision(int paddleX, int paddleY)
 {
     int X, Y;
@@ -93,11 +118,11 @@ void ball::checkCollision(int paddleX, int paddleY)
 
             if(X <= paddleX + 15 && X >= paddleX)
             {
-                if((Y > paddleY && Y < paddleY + 55))
+                if((Y > paddleY && Y < paddleY + 60) || (coorY > paddleY && coorY < paddleY + 60))
                 {
                 trackDirection = downLeft;
                 }
-                else if((Y >= paddleY && Y<= paddleY + 10))
+                else if((Y >= paddleY && Y <= paddleY + 10)|| (coorY >= paddleY && coorY <= paddleY + 10))
                 {
                 trackDirection = upLeft;
                 }
@@ -111,11 +136,11 @@ void ball::checkCollision(int paddleX, int paddleY)
         Y = coorY - 10;
         if(X <= paddleX + 15 && X >= paddleX)
         {
-            if((Y > paddleY && Y < paddleY + 60))
+            if((Y > paddleY && Y < paddleY + 60)|| (coorY > paddleY && coorY < paddleY + 60))
             {
             trackDirection = upLeft;
             }
-            else if(Y <= paddleY + 65 && Y <= paddleY + 55)
+            else if((Y <= paddleY + 65 && Y >= paddleY + 55)|| (coorY <= paddleY + 65 && coorY >= paddleY + 55))
             {
             trackDirection = downLeft;
             }
@@ -129,11 +154,11 @@ void ball::checkCollision(int paddleX, int paddleY)
         Y = coorY + 10;
         if(X <= paddleX + 15 && X >= paddleX)
         {
-            if((Y > paddleY && Y < paddleY + 55))
+            if((Y > paddleY && Y < paddleY + 60)|| (coorY > paddleY && coorY < paddleY + 60))
             {
             trackDirection = downRight;
             }
-            else if((Y >= paddleY - 5 && Y<= paddleY + 5))
+            else if((Y >= paddleY  && Y<= paddleY + 10) || (coorY >= paddleY && coorY <= paddleY + 10))
             {
             trackDirection = upRight;
             }
@@ -147,11 +172,11 @@ void ball::checkCollision(int paddleX, int paddleY)
         Y = coorY - 10;
         if(X <= paddleX + 15 && X >= paddleX)
         {
-            if((Y > paddleY && Y < paddleY + 55))
+            if((Y > paddleY && Y < paddleY + 60) || (coorY > paddleY && coorY < paddleY + 60))
             {
             trackDirection = upRight;
             }
-            else if((Y <= paddleY + 65 && Y <= paddleY + 55))
+            else if((Y <= paddleY + 65 && Y >= paddleY + 55)|| (coorY <= paddleY + 65 && coorY >= paddleY + 55))
             {
             trackDirection = downRight;
             }
