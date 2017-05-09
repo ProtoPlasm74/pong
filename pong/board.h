@@ -3,7 +3,10 @@
 #include <QWidget>
 #include <QPainter>
 #include <QTimer>
+#include <QLabel>
 #include "ball.h"
+#include "paddle.h"
+#include "paddle2.h"
 
 class board:public QWidget
 {
@@ -12,10 +15,17 @@ class board:public QWidget
 public:
     board(QWidget* theWindow = 0);
     void paintEvent(QPaintEvent *event);
+    void resetAndScore(int in);
 
 private:
     QTimer* imageTimeout;
+    QLabel* P1dispSc, *P2dispSc;
     ball* ballImage;
+    Paddle* paddle1;
+    Paddle2* paddle2;
+    void keyPressEvent(QKeyEvent *event);
+    void keyReleaseEvent(QKeyEvent *event);
+    int timeIter, p1score, p2score;
 
 private slots:
     void coordinateUpdate();
